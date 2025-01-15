@@ -1,7 +1,7 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, rgba(82, 142, 195, 0.8), rgba(78, 123, 174, 0.8)), url("./assests/NO8hx.png") no-repeat center center fixed;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, rgba(82, 142, 195, 0.9), rgba(78, 123, 174, 0.9)), url("./assests/NO8hx.png") no-repeat center center fixed;
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -9,19 +9,21 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards,  1s 4s forwards; /* Added background color animation */
 }
 
 /* Navigation Bar */
 .nav {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #fff;
     text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    position: absolute;
-    top: 2%;
-    left: 40%;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeIn 1s ease-in 0.5s forwards;
 }
 
 /* Search Box */
@@ -30,38 +32,49 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    width: 100%;
 }
 
 #city {
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 30px;
+    padding: 12px 18px;
+    font-size: 1.1rem;
+    border-radius: 25px;
     border: 2px solid #fff;
-    margin-right: 10px;
+    margin-right: 12px;
     width: 250px;
     outline: none;
     transition: 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 #city:focus {
     border-color: #ff7f50;
+    box-shadow: 0px 0px 15px rgba(255, 127, 80, 0.7);
 }
 
 #search {
-    padding: 10px 20px;
+    padding: 12px 25px;
     background-color: #ff7f50;
     color: #fff;
     font-size: 1.2rem;
-    border-radius: 30px;
+    border-radius: 25px;
     border: none;
     cursor: pointer;
     transition: 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 #search:hover {
     background-color: #ff6347;
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#search:active {
+    transform: translateY(1px);
 }
 
 /* Weather Info Section */
@@ -70,36 +83,108 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in 1s forwards;
 }
 
+/* Card Design */
 .card {
     background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
     border-radius: 20px;
-    padding: 20px;
-    width: 300px;
+    padding: 25px;
+    width: 350px;
     text-align: center;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in 1.5s forwards;
 }
 
 .card:hover {
     transform: translateY(-10px);
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.6);
 }
 
 .card img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     margin-bottom: 20px;
 }
 
 .city-name {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in 2s forwards;
 }
 
 .temperature {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-top: 10px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in 2.2s forwards;
+}
+
+/* Humidity and Wind Styling */
+.humidity, .wind {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-weight: 500;
+    color: #f1f1f1;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in 2.4s forwards;
+}
+
+.humidity img, .wind img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.humidity span, .wind span {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Additional Layout Adjustments */
+.hum {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.1rem;
+    font-family: 'Georgia', Times, serif;
+    padding: 5px 20px;
     margin-top: 10px;
 }
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
